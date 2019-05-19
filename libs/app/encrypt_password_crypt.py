@@ -6,6 +6,8 @@ encrypt_password_crpyt.py
 import sys as _sys
 import getpass as _getpass
 
+import libs.domain.usecases.encrypt_password_crypt as _usecase
+
 
 def get_password():
     """
@@ -22,4 +24,6 @@ def generate_password(salt):
     generate password
     """
     password = get_password()
-    print(password, salt)
+    encrypter = _usecase.Encrypter(password, salt)
+    encrypted = encrypter.generate_password()
+    print(encrypted)
