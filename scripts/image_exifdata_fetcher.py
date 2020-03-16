@@ -17,18 +17,15 @@ def validate(ctx, param, value):
     """
     if param.name == "path":
         if not _os.path.isfile(value):
-            print("File {value} not found".format(value=value))
+            print(f"File {value} not found")
             ctx.exit()
         elif not _os.access(value, _os.R_OK):
-            print("Permission denied for {value}".format(value=value))
+            print(f"Permission denied for {value}")
             ctx.exit()
     elif param.name == "outfile":
         if not value.endswith(".kml"):
             print(
-                "{value} is not allowed. Default is set: {param}".format(
-                    value=value,
-                    param=param.default,
-                ),
+                f"{value} is not allowed. Default is set: {param.default}"
             )
             value = param.default
 
